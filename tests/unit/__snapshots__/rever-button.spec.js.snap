@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReverButton.vue Snapshot should render content correctly 1`] = `
+<button
+  class="btn-primary"
+/>
+`;

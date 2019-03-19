@@ -3,40 +3,54 @@ import ReverButton from '@/components/ReverButton.vue';
 import ButtonPageObject from '../pageObjects/ReverButton.po';
 
 describe('ReverButton.vue', () => {
-  const mountButton = (options = {}) => {
-    const wrapper = shallowMount(ReverButton, {
-      propsData: {
-        onClick: options.onClickStub || jest.fn(),
-        type: options.type,
-      },
+  describe('Button', () => {
+    const mountButton = (options = {}) => {
+      const wrapper = shallowMount(ReverButton, {
+        propsData: {
+          onClick: options.onClickStub || jest.fn(),
+          type: options.type,
+        },
+      });
+      return new ButtonPageObject(wrapper);
+    };
+
+    it('handles a button click', () => {
+      const onClickStub = jest.fn();
+      const button = mountButton({ onClickStub });
+
+      button.click();
+
+      expect(onClickStub).toBeCalled();
     });
-    return new ButtonPageObject(wrapper);
-  };
 
-  it('handles a button click', () => {
-    const onClickStub = jest.fn();
-    const button = mountButton({ onClickStub });
+    it('renders as primary button', () => {
+      const button = mountButton({ type: 'primary' });
 
-    button.click();
+      expect(button.isPrimary()).toBe(true);
+    });
 
-    expect(onClickStub).toBeCalled();
+    it('renders as warning button', () => {
+      const button = mountButton({ type: 'warning' });
+
+      expect(button.isWarning()).toBe(true);
+    });
+
+    it('renders as danger button', () => {
+      const button = mountButton({ type: 'danger' });
+
+      expect(button.isDanger()).toBe(true);
+    });
   });
 
-  it('renders as primary button', () => {
-    const button = mountButton({ type: 'primary' });
+  describe('Snapshot', () => {
+    it('should render content correctly', () => {
+      const wrapper = shallowMount(ReverButton, {
+        propsData: {
+          onClick: jest.fn(),
+        },
+      });
 
-    expect(button.isPrimary()).toBe(true);
-  });
-
-  it('renders as warning button', () => {
-    const button = mountButton({ type: 'warning' });
-
-    expect(button.isWarning()).toBe(true);
-  });
-
-  it('renders as danger button', () => {
-    const button = mountButton({ type: 'danger' });
-
-    expect(button.isDanger()).toBe(true);
+      expect(wrapper.vm.$el).toMatchSnapshot();
+    });
   });
 });
