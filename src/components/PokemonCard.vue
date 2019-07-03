@@ -1,6 +1,7 @@
 <template>
-  <div class="pokemon-card">
-    {{ pokemon.name }}
+  <div class="flex flex-col mx-6 bg-blue rounded-lg py-4 px-8 w-32 h-32 my-6 cursor-pointer">
+    <img class="w-16 h-16 rounded" :src="pokemon.url"/>
+    <p class="text-lg text-center">{{ pokemon.name }}</p>
   </div>
 </template>
 
@@ -10,10 +11,3 @@ export default {
   props: ['pokemon'],
 };
 </script>
-
-<style>
-  .pokelist {
-    display: flex;
-    flex-direction: row;
-  }
-</style>

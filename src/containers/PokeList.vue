@@ -1,13 +1,16 @@
 <template>
-  <div class="pokelist">
+  <div class="container flex flex-row flex-wrap">
     <template v-for="pokemon in pokemons">
-      <pokemon-card :key="pokemon.name" :pokemon="pokemon">
-      </pokemon-card>
+      <pokemon-card
+        :key="pokemon.name"
+        :pokemon="pokemon"
+      />
     </template>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import PokemonCard from '@/components/PokemonCard.vue';
 import store from '@/store';
 
@@ -18,9 +21,7 @@ export default {
   },
   store,
   computed: {
-    pokemons: function () {
-      return this.$store.state.pokemons;
-    },
+    ...mapState({ pokemons: (state) => state.pokemons })
   },
   mounted: function () {
     return this.$store.dispatch('getPokemons');
@@ -29,8 +30,8 @@ export default {
 </script>
 
 <style>
-  .pokelist {
-    display: flex;
-    flex-direction: row;
-  }
+.pokelist {
+  display: flex;
+  flex-direction: row;
+}
 </style>
