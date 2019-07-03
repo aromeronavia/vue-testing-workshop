@@ -12,16 +12,20 @@ localVue.use(Vuex);
 const mockData = {
   results: [{
     name: 'Pikachu',
+    url: 'https://photo.ai/1',
   }, {
     name: 'Bulbasaur',
+    url: 'https://photo.ai/2',
   }, {
     name: 'Mew',
+    url: 'https://photo.ai/3',
   }, {
     name: 'Mewtwo',
+    url: 'https://photo.ai/4',
   }],
 };
 
-describe.skip('PokeList', () => {
+describe('PokeList', () => {
   let mock;
 
   beforeEach(() => {
@@ -29,7 +33,7 @@ describe.skip('PokeList', () => {
   });
 
   it('should render a list of pokemons', async () => {
-    mock.onGet('https://pokeapi.co/api/v2/pokemon').reply(200, mockData);
+    mock.onGet('http://localhost:3000/pokemons').reply(200, mockData);
 
     const wrapper = mount(PokeList, {
       store,
@@ -37,15 +41,7 @@ describe.skip('PokeList', () => {
     });
 
     await flushPromises();
-    const pokemonCards = wrapper.findAll('.pokemon-card');
+    const pokemonCards = wrapper.findAll('[tid="pokemon-card"]');
     expect(pokemonCards.length).toEqual(4);
-  });
-
-  it('should display an empty state for the cards', () => {
-    mock.onGet('https://pokeapi.co/api/v2/pokemon').reply(200, []);
-
-    const wrapper = mount(PokeList, {
-
-    });
   });
 });

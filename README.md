@@ -2,7 +2,16 @@
 
 ## Project setup
 ```
+brew install nvm
+nvm install 11.14.0
+nvm use 11.14.0
+
 npm install
+```
+
+### Run the back end
+```
+node back/index.js
 ```
 
 ### Compiles and hot-reloads for development
@@ -10,7 +19,7 @@ npm install
 npm run serve
 ```
 
-### Run your unit tests
+### Run the tests
 ```
 npm run test:unit
 ```

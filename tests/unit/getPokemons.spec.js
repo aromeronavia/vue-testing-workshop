@@ -9,28 +9,21 @@ describe('Get Pokemons', () => {
 
   beforeEach(() => {
     mock = new MockAdapter(axios);
-    mock.onGet('https://pokeapi.co/api/v2/pokemon')
+    mock.onGet('http://localhost:3000/pokemons')
       .reply(200, {
         results: [{
           name: 'Pikachu',
-          url: 'https://pokeapi.co/api/v2/pokemon/1',
+          url: 'https://photo.ai/1',
         }, {
           name: 'Bulbasaur',
-          url: 'https://pokeapi.co/api/v2/pokemon/2',
+          url: 'https://photo.ai/2',
         }, {
           name: 'Mew',
-          url: 'https://pokeapi.co/api/v2/pokemon/3',
+          url: 'https://photo.ai/3',
         }, {
           name: 'Mewtwo',
-          url: 'https://pokeapi.co/api/v2/pokemon/4',
+          url: 'https://photo.ai/4',
         }],
-      });
-
-    mock.onGet('https://pokeapi.co/api/v2/pokemon/1')
-      .reply({
-        sprites: {
-          back_default: 'https://photo.ai/1',
-        },
       });
   });
 
@@ -45,10 +38,10 @@ describe('Get Pokemons', () => {
     expect(commit.args).toEqual([
       [
         'SET_POKEMONS', [
-          { name: 'Pikachu' },
-          { name: 'Bulbasaur' },
-          { name: 'Mew' },
-          { name: 'Mewtwo' },
+          { name: 'Pikachu', url: 'https://photo.ai/1' },
+          { name: 'Bulbasaur', url: 'https://photo.ai/2' },
+          { name: 'Mew', url: 'https://photo.ai/3' },
+          { name: 'Mewtwo', url: 'https://photo.ai/4' },
         ],
       ],
     ]);
