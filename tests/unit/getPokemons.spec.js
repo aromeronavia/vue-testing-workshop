@@ -13,13 +13,24 @@ describe('Get Pokemons', () => {
       .reply(200, {
         results: [{
           name: 'Pikachu',
+          url: 'https://pokeapi.co/api/v2/pokemon/1',
         }, {
           name: 'Bulbasaur',
+          url: 'https://pokeapi.co/api/v2/pokemon/2',
         }, {
           name: 'Mew',
+          url: 'https://pokeapi.co/api/v2/pokemon/3',
         }, {
           name: 'Mewtwo',
+          url: 'https://pokeapi.co/api/v2/pokemon/4',
         }],
+      });
+
+    mock.onGet('https://pokeapi.co/api/v2/pokemon/1')
+      .reply({
+        sprites: {
+          back_default: 'https://photo.ai/1',
+        },
       });
   });
 

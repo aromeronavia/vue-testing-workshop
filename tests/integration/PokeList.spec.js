@@ -21,7 +21,7 @@ const mockData = {
   }],
 };
 
-describe('PokeList', () => {
+describe.skip('PokeList', () => {
   let mock;
 
   beforeEach(() => {

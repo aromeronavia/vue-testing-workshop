@@ -6,7 +6,7 @@
 
 <script>
 import PokeList from '@/containers/PokeList.vue';
-import '@/assets/css/tailwind.css'
+import '@/assets/css/tailwind.css';
 
 export default {
   name: 'HelloWorld',
