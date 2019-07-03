@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import PokemonCard from '@/components/PokemonCard.vue';
 import store from '@/store';
 
@@ -23,8 +23,11 @@ export default {
   computed: {
     ...mapState({ pokemons: (state) => state.pokemons })
   },
+  methods: {
+    ...mapActions(['getPokemons'])
+  },
   mounted: function () {
-    return this.$store.dispatch('getPokemons');
+    return this.getPokemons()
   },
 };
 </script>
