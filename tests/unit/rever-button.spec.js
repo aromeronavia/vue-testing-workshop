@@ -14,15 +14,6 @@ describe('ReverButton.vue', () => {
       return new ButtonPageObject(wrapper);
     };
 
-    it('handles a button click', () => {
-      const onClickStub = jest.fn();
-      const button = mountButton({ onClickStub });
-
-      button.click();
-
-      expect(onClickStub).toBeCalled();
-    });
-
     it('renders as primary button', () => {
       const button = mountButton({ type: 'primary' });
 

@@ -5,7 +5,6 @@
       'btn-warning': type === 'warning',
       'btn-danger': type === 'danger',
     }"
-    @click="handleClick"
   >
     <slot></slot>
   </button>
@@ -15,10 +14,6 @@
 export default {
   name: 'ReverButton',
   props: {
-    onClick: {
-      type: Function,
-      required: true,
-    },
     type: {
       type: String,
       validator: function (value) {
@@ -26,11 +21,6 @@ export default {
       },
       required: false,
       default: 'primary',
-    },
-  },
-  methods: {
-    handleClick: function () {
-      return this.onClick();
     },
   },
 };

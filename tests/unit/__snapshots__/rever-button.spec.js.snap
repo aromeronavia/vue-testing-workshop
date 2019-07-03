@@ -3,5 +3,8 @@
 exports[`ReverButton.vue Snapshot should render content correctly 1`] = `
 <button
   class="btn-primary"
+  onclick="function() {
+        return fn.apply(this, arguments);
+      }"
 />
 `;
