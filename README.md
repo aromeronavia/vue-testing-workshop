@@ -2,9 +2,11 @@
 
 ## Project setup
 ```
-brew install nvm
-nvm install 11.14.0
+# Installs NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+# Restart your terminal
 nvm use 11.14.0
+```
 
 npm install
 ```
